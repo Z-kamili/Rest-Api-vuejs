@@ -73,7 +73,17 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $request->validate([
+            'name'=> 'required',
+            'price'=> 'required',
+            'description'=> 'required'
+        ]);
+
+        $book->fill($request->post())->$request->post()->update();
+
+        return response()->json([
+            'message' => 'Book created successfully'
+        ]);
     }
 
     /**
@@ -84,6 +94,11 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+        return response()->json([
+
+            'message' => 'Book deleted successfully'
+
+        ]);
     }
 }
