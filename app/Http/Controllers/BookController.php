@@ -74,16 +74,15 @@ class BookController extends Controller
     public function update(Request $request, Book $book)
     {
         $request->validate([
-            'name'=> 'required',
-            'price'=> 'required',
-            'description'=> 'required'
+            'name' => 'required',
+            'price' => 'required',
+            'description' => 'required'
         ]);
-
-        $book->fill($request->post())->$request->post()->update();
-
+        $book->fill($request->post())->update();
         return response()->json([
-            'message' => 'Book created successfully'
+            'message' => 'Book update successfully'
         ]);
+
     }
 
     /**
